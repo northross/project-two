@@ -1,0 +1,19 @@
+# Ex: TOKEN=tokengoeshere ID=idgoeshere TEXT=textgoeshere sh curl-scripts/examples/update.sh
+
+curl "http://localhost:4741/vocabs/${ID}" \
+  --include \
+  --request PATCH \
+  --header "Content-Type: application/json" \
+  --header "Authorization: Token token=${TOKEN}" \
+  --data '{
+    "vocab": {
+      "word": "'"${WORD}"'",
+      "sounds_like": "'"${SOUNDS_LIKE}"'",
+      "synonyms": "'"${SYNONYMS}"'",
+      "antonyms": "'"${ANTONYMS}"'",
+      "sentence": "'"${SENTENCE}"'"
+    }
+  }'
+
+
+  echo

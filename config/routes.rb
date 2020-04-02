@@ -1,9 +1,15 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
+  resources :vocabs, except: %i[new edit]
   # RESTful routes
   resources :examples, except: %i[new edit]
 
+  post 'vocabs' => 'vocabs#create'
+  get '/vocabs' => 'vocabs#index'
+  get '/vocabs/:id' => 'vocabs#show'
+  delete '/vocabs/:id' => 'vocabs#destroy'
+  patch '/vocabs/id' => 'vocabs#update'
   # Custom routes
   post '/sign-up' => 'users#signup'
   post '/sign-in' => 'users#signin'
