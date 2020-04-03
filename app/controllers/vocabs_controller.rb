@@ -1,11 +1,11 @@
 # frozen_string_literal: true
 
-class VocabsController < ApplicationController
+class VocabsController < ProtectedController
   before_action :set_vocab, only: %i[show update destroy]
 
   # GET /vocabs
   def index
-    @vocabs = Vocab.all
+    @vocabs = current_user.vocab.all
 
     render json: @vocabs
   end
@@ -17,7 +17,7 @@ class VocabsController < ApplicationController
 
   # POST /vocabs
   def create
-    @vocab = Vocab.new(vocab_params)
+    @vocab = current_user.vocab.build(vocab_params)
 
     if @vocab.save
       render json: @vocab, status: :created, location: @vocab
@@ -44,7 +44,7 @@ class VocabsController < ApplicationController
 
   # Use callbacks to share common setup or constraints between actions.
   def set_vocab
-    @vocab = Vocab.find(params[:id])
+    @vocab = current_user.vocab.find(params[:id])
   end
 
   # Only allow a trusted parameter "white list" through.

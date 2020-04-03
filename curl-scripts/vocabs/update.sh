@@ -8,6 +8,7 @@ curl "http://localhost:4741/vocabs/${ID}" \
   --data '{
     "vocab": {
       "word": "'"${WORD}"'",
+      "definition": "'"${DEFINITION}"'",
       "sounds_like": "'"${SOUNDS_LIKE}"'",
       "synonyms": "'"${SYNONYMS}"'",
       "antonyms": "'"${ANTONYMS}"'",

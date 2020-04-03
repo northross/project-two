@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   # RESTful routes
   resources :examples, except: %i[new edit]
 
-  post 'vocabs' => 'vocabs#create'
+  post '/vocabs' => 'vocabs#create'
   get '/vocabs' => 'vocabs#index'
   get '/vocabs/:id' => 'vocabs#show'
   delete '/vocabs/:id' => 'vocabs#destroy'
